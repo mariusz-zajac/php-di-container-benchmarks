@@ -15,6 +15,7 @@ use DiContainerBenchmarks\Container\Disco\DiscoContainer;
 use DiContainerBenchmarks\Container\Joomla\JoomlaContainer;
 use DiContainerBenchmarks\Container\Laravel\LaravelContainer;
 use DiContainerBenchmarks\Container\OpulenceIoc\OpulenceIocContainer;
+use DiContainerBenchmarks\Container\Phalcon\PhalconContainer;
 use DiContainerBenchmarks\Container\PhpDi\PhpDiContainer;
 use DiContainerBenchmarks\Container\PHPixieDi\PHPixieDiContainer;
 use DiContainerBenchmarks\Container\Pimple\PimpleContainer;
@@ -51,6 +52,7 @@ $containers = [
     new LaminasServiceManagerContainer(),
     new LaravelContainer(),
     new OpulenceIocContainer(),
+    new PhalconContainer(),
     new PhpDiContainer(),
     new PHPixieDiContainer(),
     new PimpleContainer(),
