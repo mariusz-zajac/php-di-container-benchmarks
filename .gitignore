@@ -1,5 +1,6 @@
 vendor/
 .terraform/
+.idea/
 
 .terraform*
 .env
