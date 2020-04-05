@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace DiContainerBenchmarks\Container\Yaco;
 
 use DiContainerBenchmarks\Container\ContainerInterface;
+use PackageVersions\Versions;
 use TheCodingMachine\Yaco\Compiler;
 use TheCodingMachine\Yaco\Definition\ObjectDefinition;
 
@@ -13,6 +14,13 @@ final class YacoContainer implements ContainerInterface
     public function getPackage(): string
     {
         return "thecodingmachine/yaco";
+    }
+
+    public function getVersion(): string
+    {
+        $version = Versions::getVersion($this->getPackage());
+
+        return explode('@', $version)[0];
     }
 
     public function getNamespace(): string

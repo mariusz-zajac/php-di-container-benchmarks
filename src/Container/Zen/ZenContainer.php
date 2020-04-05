@@ -7,6 +7,7 @@ namespace DiContainerBenchmarks\Container\Zen;
 use DiContainerBenchmarks\Container\ContainerInterface;
 use DiContainerBenchmarks\Container\Zen\Resource\PrototypeCompilerConfig;
 use DiContainerBenchmarks\Container\Zen\Resource\SingletonCompilerConfig;
+use PackageVersions\Versions;
 use WoohooLabs\Zen\Container\Builder\FileSystemContainerBuilder;
 
 final class ZenContainer implements ContainerInterface
@@ -14,6 +15,13 @@ final class ZenContainer implements ContainerInterface
     public function getPackage(): string
     {
         return "woohoolabs/zen";
+    }
+
+    public function getVersion(): string
+    {
+        $version = Versions::getVersion($this->getPackage());
+
+        return explode('@', $version)[0];
     }
 
     public function getNamespace(): string

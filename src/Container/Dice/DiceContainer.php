@@ -5,12 +5,20 @@ declare(strict_types=1);
 namespace DiContainerBenchmarks\Container\Dice;
 
 use DiContainerBenchmarks\Container\ContainerInterface;
+use PackageVersions\Versions;
 
 final class DiceContainer implements ContainerInterface
 {
     public function getPackage(): string
     {
         return "level-2/dice";
+    }
+
+    public function getVersion(): string
+    {
+        $version = Versions::getVersion($this->getPackage());
+
+        return explode('@', $version)[0];
     }
 
     public function getNamespace(): string

@@ -13,6 +13,11 @@ final class PhalconContainer implements ContainerInterface
         return 'Phalcon';
     }
 
+    public function getVersion(): string
+    {
+        return phpversion('phalcon');
+    }
+
     public function getNamespace(): string
     {
         return 'Phalcon';

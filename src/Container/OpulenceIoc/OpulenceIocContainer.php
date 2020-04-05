@@ -5,12 +5,20 @@ declare(strict_types=1);
 namespace DiContainerBenchmarks\Container\OpulenceIoc;
 
 use DiContainerBenchmarks\Container\ContainerInterface;
+use PackageVersions\Versions;
 
 final class OpulenceIocContainer implements ContainerInterface
 {
     public function getPackage(): string
     {
         return "opulence/ioc";
+    }
+
+    public function getVersion(): string
+    {
+        $version = Versions::getVersion($this->getPackage());
+
+        return explode('@', $version)[0];
     }
 
     public function getNamespace(): string

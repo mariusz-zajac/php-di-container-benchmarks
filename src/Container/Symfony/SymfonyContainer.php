@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace DiContainerBenchmarks\Container\Symfony;
 
 use DiContainerBenchmarks\Container\ContainerInterface;
+use PackageVersions\Versions;
 use RuntimeException;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Definition;
@@ -15,6 +16,13 @@ final class SymfonyContainer implements ContainerInterface
     public function getPackage(): string
     {
         return "symfony/dependency-injection";
+    }
+
+    public function getVersion(): string
+    {
+        $version = Versions::getVersion($this->getPackage());
+
+        return explode('@', $version)[0];
     }
 
     public function getNamespace(): string

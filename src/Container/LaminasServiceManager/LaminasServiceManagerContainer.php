@@ -5,12 +5,20 @@ declare(strict_types=1);
 namespace DiContainerBenchmarks\Container\LaminasServiceManager;
 
 use DiContainerBenchmarks\Container\ContainerInterface;
+use PackageVersions\Versions;
 
 final class LaminasServiceManagerContainer implements ContainerInterface
 {
     public function getPackage(): string
     {
         return "laminas/laminas-servicemanager";
+    }
+
+    public function getVersion(): string
+    {
+        $version = Versions::getVersion($this->getPackage());
+
+        return explode('@', $version)[0];
     }
 
     public function getNamespace(): string

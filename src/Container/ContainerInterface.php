@@ -8,6 +8,8 @@ interface ContainerInterface
 {
     public function getPackage(): string;
 
+    public function getVersion(): string;
+
     public function getNamespace(): string;
 
     public function getDisplayedName(): string;

@@ -7,7 +7,6 @@ namespace DiContainerBenchmarks\OutputGenerator;
 use DiContainerBenchmarks\Benchmark\BenchmarkResult;
 use DiContainerBenchmarks\Container\ContainerInterface;
 use DiContainerBenchmarks\TestSuite\TestSuiteInterface;
-use PackageVersions\Versions;
 
 use function date;
 use function file_put_contents;
@@ -86,7 +85,7 @@ final class HtmlOutputGenerator implements OutputGeneratorInterface
             </p>
 
             <p>
-                
+
                 I have been interested in the topic since then - and my curiosity was just growing after I had started
                 to develop my own DI container, Zen - so I wanted to conduct another benchmark that also tries to measure
                 real-life performance, while being as unbiased and reliable as possible. So here is my take! If you have any
@@ -112,8 +111,7 @@ HERE;
         foreach ($containers as $i => $container) {
             /** @var ContainerInterface $container */
             $package = $container->getPackage();
-            $version = Versions::getVersion($container->getPackage());
-            $displayedVersion = substr($version, 0, (int) strpos($version, "@"));
+            $version = $container->getVersion();
             $url = $container->getUrl();
             $compiled = $container->isCompiled() ? "compiled" : "dynamic";
             $autowiring = $container->isAutowiringSupported() ? "supported" : "not supported";
@@ -121,7 +119,7 @@ HERE;
             $html .= <<<HERE
                     <tr>
                         <td><a target="_blank" href="$url"><b>$package</b></a></td>
-                        <td>$displayedVersion</td>
+                        <td>$version</td>
                         <td>$compiled</td>
                         <td>$autowiring</td>
                     </tr>
@@ -163,7 +161,7 @@ HERE;
         <section>
             <h2 id="method">Method</h2>
 
-            <p>            
+            <p>
                 Each container is given 6 tasks (Test Suites) where they have to create or fetch object graphs of
                 different sizes (10 or 100 objects). For this purpose, containers are configured either to always
                 instantiate objects (this is usually called as Prototype scope) or to instantiate objects only at
@@ -186,7 +184,7 @@ HERE;
                 Furthermore, all Test Cases are performed 30 times (this is referred to as "runs") in order to improve
                 the accuracy of measurements. The median of these results are displayed in the final results.
             </p>
-        </section>    
+        </section>
 
         <hr>
         <section>

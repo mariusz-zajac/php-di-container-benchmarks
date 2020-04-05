@@ -107,12 +107,20 @@ use DiContainerBenchmarks\Fixture\Class97;
 use DiContainerBenchmarks\Fixture\Class98;
 use DiContainerBenchmarks\Fixture\Class99;
 use DiContainerBenchmarks\Fixture\Class100;
+use PackageVersions\Versions;
 
 final class PhpDiContainer implements ContainerInterface
 {
     public function getPackage(): string
     {
         return "php-di/php-di";
+    }
+
+    public function getVersion(): string
+    {
+        $version = Versions::getVersion($this->getPackage());
+
+        return explode('@', $version)[0];
     }
 
     public function getNamespace(): string
