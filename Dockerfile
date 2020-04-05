@@ -1,4 +1,4 @@
-FROM php:7.4.1-fpm-alpine3.10
+FROM mileschou/phalcon:7.4-fpm-alpine
 MAINTAINER Mate Kocsis <kocsismate@woohoolabs.com>
 
 RUN docker-php-ext-install opcache
